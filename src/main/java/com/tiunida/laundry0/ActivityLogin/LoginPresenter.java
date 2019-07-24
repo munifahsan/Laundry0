@@ -16,24 +16,15 @@ import java.util.regex.Pattern;
 
 public class LoginPresenter implements LoginPresenterMvp {
 
-    private Context mContect;
-    private FirebaseAuth mAuth;
-    private String TAG = "LoginPresenter";;
-    private DatabaseReference mDatabase;
-
     private EventBus mEventBus;
     private LoginMvpView mLoginMvpView;
     private LoginInteractorMvp mLoginInteractorMvp;
-
 
 
     public LoginPresenter(LoginMvpView loginMvpView) {
         mLoginMvpView = loginMvpView;
         mLoginInteractorMvp = new LoginInteractor();
         mEventBus = GreenRobotEventBus.getInstance();
-//        this.mContect = mContect;
-//        this.mAuth = mAuth;
-//        this.mDatabase = mDatabase;
     }
 
     @Override
@@ -46,63 +37,11 @@ public class LoginPresenter implements LoginPresenterMvp {
         mLoginMvpView = null;
         mEventBus.unregister(this);
     }
-//    @Override
-//    public boolean isValidForm(String email, String password){
-//        boolean isValid = true;
-//        if (email.isEmpty()) {
-//            //String errorMessage = task.getException().getMessage();
-//            isValid = false;
-//            Toast.makeText(mContect,"email kosong" , Toast.LENGTH_LONG).show();
-////            return;
-//        }
-//        if (!isEmailValid(email)) {
-//            isValid = false;
-//            Toast.makeText(mContect,"email ga valid" , Toast.LENGTH_LONG).show();
-////            return;
-//        }
-//        if (password.isEmpty()) {
-//            isValid = false;
-//            Toast.makeText(mContect,"pass kosong" , Toast.LENGTH_LONG).show();
-////            return;
-//        }
-//        return isValid;
-
-//        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
-//            final ProgressDialog dialog = new ProgressDialog(mContect);
-//            dialog.setMessage("loding");
-//            dialog.setCancelable(false);
-//            dialog.show();
-//
-//            mAuth.signInWithEmailAndPassword(email, password)
-//                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//                                // Sign in success, update UI with the signed-in user's information
-//                                Log.d(TAG, "signInWithEmail:success");
-//                                dialog.dismiss();
-//                                //mLoginActivity.hideProgress();
-//                                Intent intent = new Intent(mContect, MainActivity.class);
-//                                mContect.startActivity(intent);
-//                            } else {
-//                                dialog.dismiss();
-//                                // If sign in fails, display a message to the user.
-//                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-//                                Toast.makeText(mContect, "email atau password anda tidak sesuai",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                            // ...
-//                        }
-//                    });
-//        }
-
-//    }
 
     @Override
     @Subscribe
-    public void onEventMainThread(LoginEvent event){
-        switch (event.getEventType()){
+    public void onEventMainThread(LoginEvent event) {
+        switch (event.getEventType()) {
             case LoginEvent.onSignInSuccess:
                 onSignInSuccess();
                 break;
@@ -112,14 +51,21 @@ public class LoginPresenter implements LoginPresenterMvp {
         }
     }
 
-    public void onSignInSuccess(){
+    public void onUserLevelUnEqual(){
         if (mLoginMvpView != null){
+            mLoginMvpView.navigateToLoginScreen();
+            mLoginMvpView.showMessage("akun anda tidak bisa di pakai");
+        }
+    }
+
+    public void onSignInSuccess() {
+        if (mLoginMvpView != null) {
             mLoginMvpView.navigateToMainScreen();
         }
     }
 
-    public void onSignInError(){
-        if (mLoginMvpView != null){
+    public void onSignInError() {
+        if (mLoginMvpView != null) {
             mLoginMvpView.hideProgress();
             mLoginMvpView.enableInputs();
             mLoginMvpView.showMessage("Email dan password tidak sesuai");
@@ -146,12 +92,12 @@ public class LoginPresenter implements LoginPresenterMvp {
     }
 
     @Override
-    public void validateLogin(String email, String password){
-        if (mLoginMvpView != null){
+    public void validateLogin(String email, String password) {
+        if (mLoginMvpView != null) {
             mLoginMvpView.disableInputs();
             mLoginMvpView.showProgress();
         }
-        mLoginInteractorMvp.doSignIn(email,password);
+        mLoginInteractorMvp.doSignIn(email, password);
     }
 
     public static boolean isEmailValid(String email) {

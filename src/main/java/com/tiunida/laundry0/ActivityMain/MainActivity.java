@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
-
+    private String user_id;
+    private String name;
+    private FirebaseAuth firebaseAuth;
     private String current_user_id;
 
     @Override
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         getFragmentPage(new OrderFragment());
@@ -62,6 +66,26 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             getFragmentPage(new ProfileFragment());
             mBottomNavigationView.getMenu().findItem(R.id.navigation_profile).setChecked(true);
         }
+
+        user_id = firebaseAuth.getCurrentUser().getUid();
+        firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+
+                    if (task.getResult().exists()) {
+                        name = task.getResult().getString("user_level");
+                        if (name.equals("2")){
+                            sendToLogin();
+                            showMessage("Maaf akun ini hanya dapat digunakan oleh curir");
+                        }
+                    }
+                } else {
+                    String errorMessage = task.getException().getMessage();
+                    Log.d("error ngambil data : ", "" + errorMessage);
+                }
+            }
+        });
 
 
     }

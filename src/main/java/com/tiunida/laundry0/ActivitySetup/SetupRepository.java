@@ -95,6 +95,7 @@ public class SetupRepository implements SetupRepositoryMvp{
         userMap2.put("e_phone number" , user_phone);
         userMap2.put("g_gender" , gender);
         userMap2.put("f_status" , status);
+        userMap2.put("user_level" , "1");
 
         firebaseFirestore.collection("Users").document(user_id)
                 .set(userMap2).addOnCompleteListener(new OnCompleteListener<Void>() {

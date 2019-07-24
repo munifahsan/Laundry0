@@ -7,6 +7,7 @@ public interface LoginMvpView{
     void enableInputs();
     void disableInputs();
     void navigateToMainScreen();
+    void navigateToLoginScreen();
     void handleSignIn();
     void navigateToRegisterScreen();
     void navigateToForgetPassScreen();

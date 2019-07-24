@@ -3,6 +3,8 @@ package com.tiunida.laundry0.ActivityLogin.events;
 public class LoginEvent {
     public static final int onSignInError = 0;
     public static final int onSignInSuccess = 1;
+    public static final int onUserLevelEqual = 2;
+    public static final int onUserLevelUnEqual = 3;
 
     private int eventType;
     private String errorMessage;

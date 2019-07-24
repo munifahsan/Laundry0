@@ -81,10 +81,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                         String errorMessage = task.getException().getMessage();
                         showMessage(errorMessage);
                     }
-
                 }
             });
-
         }
     }
 
@@ -106,7 +104,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         finish();
     }
 
-    public void showMessage(String message){
+    public void showMessage(String message) {
         Toast.makeText(SplashScreenActivity.this, "Error : " + message, Toast.LENGTH_LONG).show();
 
     }
