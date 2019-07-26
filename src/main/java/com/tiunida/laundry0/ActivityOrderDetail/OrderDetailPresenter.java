@@ -32,10 +32,16 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
                         event.getDataSarungTangan(), event.getDataSapuTangan(), event.getDataCelana(), event.getDataCelanaDalam(), event.getDataCelanaPendek(),
                         event.getDataSrung(), event.getDataCelanaOlahraga(), event.getDataRok(), event.getDataCelanaLevis(), event.getDataKaosKaki(), event.getDataJasAlmamater(),
                         event.getDataJas(), event.getDataSelimutBesar(), event.getDataSelimutKecil(), event.getDataBagCover(), event.getDataGordengKecil(), event.getDataGordengBesar(),
-                        event.getDataSepatu(), event.getDataBantal(), event.getDataTasKecil(), event.getDataTasBesar(), event.getDataSpreiKecil(), event.getDataSpreiBesar(), event.getDataAccept(), event.getDataOnProses(), event.getDataDone(), event.getDataPaid(), event.getDataDelivered());
+                        event.getDataSepatu(), event.getDataBantal(), event.getDataTasKecil(), event.getDataTasBesar(), event.getDataSpreiKecil(), event.getDataSpreiBesar(), event.getDataAccept(), event.getDataOnProses(), event.getDataDone(), event.getDataPaid(), event.getDataPaidConfirm(), event.getDataDelivered(), event.getDataDeliveredConfirm());
                 break;
             case OrderDetailEvents.onGetDataError:
 
+                break;
+            case OrderDetailEvents.onUpadateDataSuccess:
+                onUpdateSucces(event.getDataPaid(), event.getDataDelivered());
+                break;
+            case OrderDetailEvents.onUpdateDataError:
+                onUpdateError(event.getErrorMessage());
                 break;
         }
     }
@@ -86,8 +92,8 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
                                  String dataSpreiKecil, String dataSpreiBesar,
 
                                  String dataAccept, String dataOnProses,
-                                 String dataDone, String dataPaid,
-                                 String delivered) {
+                                 String dataDone, String dataPaid, String dataPaidConfirm,
+                                 String delivered, String deliveredConfirm) {
 
         //mOrderDetailViewMvp.showProgress();
         if (mOrderDetailViewMvp != null) {
@@ -98,8 +104,68 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
             setHandCard(dataSarungTangan, dataSapuTangan);
             setFeetCard(dataCelana, dataCelanaDalam, dataCelanaPendek, dataSrung, dataCelanaOlahraga, dataRok, dataCelanaLevis, dataKaosKaki);
             setOtherCard(dataJasAlmamater, dataJas, dataSelimutBesar, dataSelimutKecil, dataBagCover, dataGordengKecil, dataGordengBesar, dataSepatu, dataBantal, dataTasKecil, dataTasBesar, dataSpreiKecil, dataSpreiBesar);
+            setButtonPaid(dataDone, dataPaid, dataPaidConfirm);
+            setButtonDeliver(delivered, deliveredConfirm);
             mOrderDetailViewMvp.hideProgress();
             mOrderDetailViewMvp.setAskAdminBtnEnable();
+        }
+    }
+
+    public void setButtonPaid(String done, String paid, String paidConfirm) {
+        String exist = "1";
+        String empty = "";
+        if (done.equals(exist)) {
+            mOrderDetailViewMvp.setConfrimPaidBtnEnable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("KONFIRMASI PEMBAYARAN");
+        } else if (paid.equals(exist) && paidConfirm.equals(exist)){
+            mOrderDetailViewMvp.setConfirmPaidBtnDisable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("SELESAI DIBAYAR");
+        } else if (paid.equals(exist) && paidConfirm.equals(empty)){
+            mOrderDetailViewMvp.setConfirmPaidBtnDisable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("MENUNGGU KONFIRMASI KURIR");
+        } else {
+            mOrderDetailViewMvp.setConfirmPaidBtnGone();
+        }
+    }
+
+    public void setButtonDeliver(String deliver, String deliverConfirm){
+        String exist = "1";
+        String empty = "";
+        if (deliver.equals(empty) && deliverConfirm.equals(exist)) {
+            mOrderDetailViewMvp.setConfrimDeliverBtnEnable();
+            mOrderDetailViewMvp.setConfirmDeliverBtnTxt("KONFIRMASI TELAH DITERIMA");
+        } else if (deliver.equals(exist) && deliverConfirm.equals(exist)){
+            mOrderDetailViewMvp.setConfirmDeliverBtnDisable();
+            mOrderDetailViewMvp.setConfirmDeliverBtnTxt("SELESAI DIANTAR");
+        } else {
+            mOrderDetailViewMvp.setConfirmDeliverBtnGone();
+        }
+    }
+
+    public void validateUpdatePaid(String order_id) {
+        if (!order_id.isEmpty()) {
+            mOrderDetailViewMvp.showProgress();
+            mOrderDetailInteractorMvp.updatePaid(order_id);
+        }
+    }
+
+    public void validateUpdateDeliver(String order_id) {
+        if (!order_id.isEmpty()) {
+            mOrderDetailViewMvp.showProgress();
+            mOrderDetailInteractorMvp.updateDeliver(order_id);
+        }
+    }
+
+    public void onUpdateSucces(String paid, String deliver) {
+        if (mOrderDetailViewMvp != null) {
+            mOrderDetailViewMvp.hideProgress();
+            mOrderDetailViewMvp.showMessage("succes");
+        }
+    }
+
+    public void onUpdateError(String error) {
+        if (mOrderDetailViewMvp != null) {
+            mOrderDetailViewMvp.showMessage(error);
         }
     }
 

@@ -10,9 +10,31 @@ public interface OrderDetailViewMvp {
 
     void showProgress();
 
+    void showMessage(String message);
+
     void setAskAdminBtnEnable();
 
     void setAskAdminBtnDisable();
+
+    void setConfrimPaidBtnEnable();
+
+    void setConfirmPaidBtnDisable();
+
+    void setConfirmPaidBtnGone();
+
+    void setConfrimDeliverBtnEnable();
+
+    void setConfirmDeliverBtnDisable();
+
+    void setConfirmDeliverBtnGone();
+
+    void setConfirmPaidBtnTxt(String txt);
+
+    void setConfirmDeliverBtnTxt(String txt);
+
+    void setConfirmPaidBtnColor();
+
+    void setConfirmDeliverBtnColor();
 
     void askAdminBtnOnClick();
 

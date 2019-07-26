@@ -31,5 +31,8 @@ public interface OrderDetailPresenterMvp {
                           String dataSpreiKecil, String dataSpreiBesar,
                           String dataAccept, String dataOnProses,
                           String dataDone, String dataPaid,
-                          String delivered);
+                          String dataPaidConfirm,
+                          String delivered, String deliveredConfirm);
+    void validateUpdatePaid(String order_id) ;
+    void validateUpdateDeliver(String order_id);
 }

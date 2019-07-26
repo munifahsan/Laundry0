@@ -1,13 +1,17 @@
 package com.tiunida.laundry0.ActivityOrderDetail.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -212,8 +216,16 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     @BindView(R.id.askAdminBtn)
     Button askAdminBtn;
+    @BindView(R.id.confirmPaid)
+    Button confirmPaidBtn;
+    @BindView(R.id.confirmDeliver)
+    Button confirmDeliverBtn;
     @BindView(R.id.order_detail_progress)
     ProgressBar progressBar;
+    @BindView(R.id.swlayout)
+    SwipeRefreshLayout swLayout;
+
+    String order_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,7 +238,7 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         ButterKnife.bind(this);
 
         Intent orderDetailIntent = getIntent();
-        String order_id = orderDetailIntent.getStringExtra("id");
+        order_id = orderDetailIntent.getStringExtra("id");
 
         Toast.makeText(OrderDetailActivity.this, "order id " + order_id, Toast.LENGTH_LONG).show();
 
@@ -247,7 +259,27 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
                 finish();
             }
         });
+//
+//        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+//        swLayout.setColorSchemeResources(R.color.twoh_accent,R.color.twoh_primary);
 
+        // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+
+                    }
+                }, 5000);
+            }
+        });
     }
 
     @Override
@@ -296,6 +328,10 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         }
     }
 
+    public void showMessage(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
     public void hideProgress(){
         progressBar.setVisibility(View.GONE);
     }
@@ -310,6 +346,121 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setAskAdminBtnDisable(){
         askAdminBtn.setEnabled(false);
+    }
+
+    public void setConfrimPaidBtnEnable(){
+        confirmPaidBtn.setEnabled(true);
+    }
+
+    public void setConfirmPaidBtnDisable(){
+        confirmPaidBtn.setEnabled(false);
+        setConfirmPaidBtnColor();
+    }
+
+    public void setConfirmPaidBtnGone(){
+        confirmPaidBtn.setVisibility(View.GONE);
+    }
+
+    public void setConfrimDeliverBtnEnable(){
+        confirmDeliverBtn.setEnabled(true);
+    }
+
+    public void setConfirmDeliverBtnDisable(){
+        confirmDeliverBtn.setEnabled(false);
+        setConfirmDeliverBtnColor();
+    }
+
+    public void setConfirmDeliverBtnGone(){
+        confirmDeliverBtn.setVisibility(View.GONE);
+    }
+
+    public void setConfirmPaidBtnTxt(String txt){
+        confirmPaidBtn.setText(txt);
+    }
+
+    public void setConfirmDeliverBtnTxt(String txt){
+        confirmDeliverBtn.setText(txt);
+    }
+
+    public void setConfirmPaidBtnColor(){
+        confirmPaidBtn.setBackgroundColor(getResources().getColor(R.color.abuabu));
+    }
+
+    public void setConfirmDeliverBtnColor(){
+        confirmDeliverBtn.setBackgroundColor(getResources().getColor(R.color.abuabu));
+    }
+
+    @OnClick(R.id.confirmPaid)
+    public void confirmPaidOnClick(){
+        showDialogOnConfirmPaidBtnOnClick();
+    }
+
+    @OnClick(R.id.confirmDeliver)
+    public void confirmDeliverOnClick(){
+        showDialogOnConfirmDeliverBtnOnClick();
+    }
+
+    public void showDialogOnConfirmPaidBtnOnClick() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Yakin udah diambil ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Saip udah", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        mOrderDetailPresenterMvp.validateUpdatePaid(order_id);
+                        mOrderDetailPresenterMvp.getOrderData(order_id);
+
+                    }
+                })
+                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
+    }
+
+    public void showDialogOnConfirmDeliverBtnOnClick() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Yakin udah diambil ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Saip udah", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        mOrderDetailPresenterMvp.validateUpdateDeliver(order_id);
+                        mOrderDetailPresenterMvp.getOrderData(order_id);
+                    }
+                })
+                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 
     private void sendWhatsapp(String message) {

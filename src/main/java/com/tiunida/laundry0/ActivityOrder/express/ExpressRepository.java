@@ -168,7 +168,9 @@ public class ExpressRepository implements ExpressRepositoryMvp {
         userMap2.put("h_on_proses2", "");
         userMap2.put("h_done2", "");
         userMap2.put("h_paid2", "");
+        userMap2.put("h_paid2Confirm", "");
         userMap2.put("h_delivered2", "");
+        userMap2.put("h_delivered2Confirm", "");
 
         firebaseFirestore.collection("Orders").add(userMap2).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override

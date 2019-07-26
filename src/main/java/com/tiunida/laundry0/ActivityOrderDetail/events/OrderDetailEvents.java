@@ -5,12 +5,14 @@ public class OrderDetailEvents {
     public static final int onInputSuccess = 1;
     public static final int onGetDataSuccess = 2;
     public static final int onGetDataError = 3;
+    public static final int onUpadateDataSuccess = 4;
+    public static final int onUpdateDataError = 5;
 
     private int eventType;
     private String errorMessage;
 
     private String dataWeight, dataPrice, dataPriceDiskon, dataDiskon;
-    private String dataAccept, dataOnProses, dataDone, dataPaid, dataDelivered;
+    private String dataAccept, dataOnProses, dataDone, dataPaid, dataPaidConfirm, dataDelivered, dataDeliveredConfirm;
     private String dataJenis;
     private String dataDesc;
     private String dataTimeNow;
@@ -96,6 +98,22 @@ public class OrderDetailEvents {
 
     public void setDataDelivered(String dataDelivered) {
         this.dataDelivered = dataDelivered;
+    }
+
+    public String getDataPaidConfirm() {
+        return dataPaidConfirm;
+    }
+
+    public void setDataPaidConfirm(String dataPaidConfirm) {
+        this.dataPaidConfirm = dataPaidConfirm;
+    }
+
+    public String getDataDeliveredConfirm() {
+        return dataDeliveredConfirm;
+    }
+
+    public void setDataDeliveredConfirm(String dataDeliveredConfirm) {
+        this.dataDeliveredConfirm = dataDeliveredConfirm;
     }
 
     public String getDataJenis() {
