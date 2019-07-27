@@ -163,7 +163,7 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
     public void updateDeliver(String order_id) {
         Log.d("id order id ", ""+order_id);
         Map<String, Object> userMap2 = new HashMap<>();
-        userMap2.put("h_accepted2Confirm", "1");
+        userMap2.put("h_delivered2Confirm", "1");
 
         firebaseFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

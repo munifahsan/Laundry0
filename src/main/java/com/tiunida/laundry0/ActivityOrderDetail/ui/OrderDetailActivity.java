@@ -22,6 +22,9 @@ import com.tiunida.laundry0.R;
 import com.tiunida.laundry0.ActivityOrderDetail.OrderDetailPresenter;
 import com.tiunida.laundry0.ActivityOrderDetail.OrderDetailPresenterMvp;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -261,13 +264,15 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         });
 //
 //        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
-//        swLayout.setColorSchemeResources(R.color.twoh_accent,R.color.twoh_primary);
+        swLayout.setColorSchemeResources(R.color.biruLaut,R.color.biruGelap);
 
         // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
+                getOrderData();
+                Toast.makeText(OrderDetailActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
                 // Handler untuk menjalankan jeda selama 5 detik
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
@@ -277,9 +282,13 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
 
                     }
-                }, 5000);
+                }, 1000);
             }
         });
+    }
+
+    public void getOrderData(){
+        mOrderDetailPresenterMvp.getOrderData(order_id);
     }
 
     @Override
@@ -350,11 +359,14 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setConfrimPaidBtnEnable(){
         confirmPaidBtn.setEnabled(true);
+        confirmPaidBtn.setBackgroundResource(R.drawable.btn_background_enable);
+        confirmPaidBtn.setTextColor(getResources().getColor(R.color.putih));
     }
 
-    public void setConfirmPaidBtnDisable(){
+    public void setConfirmPaidBtnDisable(int drawable, int textColor){
         confirmPaidBtn.setEnabled(false);
-        setConfirmPaidBtnColor();
+        confirmPaidBtn.setBackgroundResource(drawable);
+        confirmPaidBtn.setTextColor(getResources().getColor(textColor));
     }
 
     public void setConfirmPaidBtnGone(){
@@ -363,11 +375,14 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setConfrimDeliverBtnEnable(){
         confirmDeliverBtn.setEnabled(true);
+        confirmDeliverBtn.setBackgroundResource(R.drawable.btn_background_enable);
+        confirmDeliverBtn.setTextColor(getResources().getColor(R.color.putih));
     }
 
-    public void setConfirmDeliverBtnDisable(){
+    public void setConfirmDeliverBtnDisable(int drawable, int textColor){
         confirmDeliverBtn.setEnabled(false);
-        setConfirmDeliverBtnColor();
+        confirmDeliverBtn.setBackgroundResource(drawable);
+        confirmDeliverBtn.setTextColor(getResources().getColor(textColor));
     }
 
     public void setConfirmDeliverBtnGone(){
@@ -380,14 +395,6 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setConfirmDeliverBtnTxt(String txt){
         confirmDeliverBtn.setText(txt);
-    }
-
-    public void setConfirmPaidBtnColor(){
-        confirmPaidBtn.setBackgroundColor(getResources().getColor(R.color.abuabu));
-    }
-
-    public void setConfirmDeliverBtnColor(){
-        confirmDeliverBtn.setBackgroundColor(getResources().getColor(R.color.abuabu));
     }
 
     @OnClick(R.id.confirmPaid)

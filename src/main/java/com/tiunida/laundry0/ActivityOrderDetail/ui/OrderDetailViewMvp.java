@@ -18,23 +18,19 @@ public interface OrderDetailViewMvp {
 
     void setConfrimPaidBtnEnable();
 
-    void setConfirmPaidBtnDisable();
+    void setConfirmPaidBtnDisable(int drawable, int textColor);
 
     void setConfirmPaidBtnGone();
 
     void setConfrimDeliverBtnEnable();
 
-    void setConfirmDeliverBtnDisable();
+    void setConfirmDeliverBtnDisable(int drawable, int textColor);
 
     void setConfirmDeliverBtnGone();
 
     void setConfirmPaidBtnTxt(String txt);
 
     void setConfirmDeliverBtnTxt(String txt);
-
-    void setConfirmPaidBtnColor();
-
-    void setConfirmDeliverBtnColor();
 
     void askAdminBtnOnClick();
 
