@@ -176,39 +176,18 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
     }
 
     public void setInfo(String jenis, String timeNow, String timeDpne, String weight, String price, String priceDiskon, String diskon) {
-        if (jenis != null) {
-            mOrderDetailViewMvp.setLaundryType(jenis);
-        }
+       if (mOrderDetailViewMvp != null){
+           mOrderDetailViewMvp.setLaundryType(jenis);
 
-        if (timeNow != null) {
-            mOrderDetailViewMvp.setTglPesan(timeNow);
-        }
+           mOrderDetailViewMvp.setTglPesan(timeNow);
 
-        if (timeDpne != null) {
-            mOrderDetailViewMvp.setTglSelesai(timeDpne);
-        }
+           mOrderDetailViewMvp.setTglSelesai(timeDpne);
 
-        if (weight != null) {
-            mOrderDetailViewMvp.setLaundryWeight(weight);
-            setPrice(weight, diskon, jenis);
-        }
+           mOrderDetailViewMvp.setLaundryWeight(weight);
+           setPrice(weight, diskon, jenis);
 
-//        if (price != null) {
-//            mOrderDetailViewMvp.setLaundryOriginalPrice(price);
-//        }
-
-        if (diskon != null) {
-            mOrderDetailViewMvp.setLaundryDiskon(diskon);
-        }
-
-//        if (priceDiskon != null) {
-//            int priceInt = Integer.valueOf(price);
-//            int diskonInt = Integer.valueOf(diskon);
-//            int hasil = priceInt * diskonInt / 100;
-//            int totalPrice = priceInt - hasil;
-//            Log.e("total price", "" + priceInt);
-//            mOrderDetailViewMvp.setLaundryPrice(String.valueOf(totalPrice));
-//        }
+           mOrderDetailViewMvp.setLaundryDiskon(diskon);
+       }
     }
 
     public String setTotalPrice(int price, String diskon) {
@@ -1019,44 +998,331 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
                     break;
                     //-2---------------
                 case "2":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(8000));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(8000, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(16000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(16000, diskon));
                     break;
                 case "2.1":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(8800));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(8800, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(16800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(16800, diskon));
                     break;
                 case "2.2":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(9600));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(9600, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(17600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(17600, diskon));
                     break;
                 case "2.3":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(10400));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(10400, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(18400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(18400, diskon));
                     break;
                 case "2.4":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(11200));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(11200, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(19200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(19200, diskon));
                     break;
                 case "2.5":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(12000));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(12000, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(20000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(20000, diskon));
                     break;
                 case "2.6":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(12800));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(12800, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(20800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(20800, diskon));
                     break;
                 case "2.7":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(13600));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(13600, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(21600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(21600, diskon));
                     break;
                 case "2.8":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(14400));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(14400, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(22400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(22400, diskon));
                     break;
                 case "2.9":
-                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(15200));
-                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(15200, diskon));
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(23200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(23200, diskon));
+                    break;
+                //-3---------------
+                case "3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(24000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(24000, diskon));
+                    break;
+                case "3.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(24800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(24800, diskon));
+                    break;
+                case "3.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(25600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(25600, diskon));
+                    break;
+                case "3.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(26400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(26400, diskon));
+                    break;
+                case "3.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(27200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(27200, diskon));
+                    break;
+                case "3.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(28000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(28000, diskon));
+                    break;
+                case "3.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(28800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(28800, diskon));
+                    break;
+                case "3.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(29600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(29600, diskon));
+                    break;
+                case "3.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(30400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(30400, diskon));
+                    break;
+                case "3.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(31200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(31200, diskon));
+                    break;
+                //-4---------------
+                case "4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(32000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(32000, diskon));
+                    break;
+                case "4.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(32800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(32800, diskon));
+                    break;
+                case "4.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(33600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(33600, diskon));
+                    break;
+                case "4.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(33400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(33400, diskon));
+                    break;
+                case "4.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(34200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(34200, diskon));
+                    break;
+                case "4.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(35000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(35000, diskon));
+                    break;
+                case "4.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(35800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(35800, diskon));
+                    break;
+                case "4.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(36600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(36600, diskon));
+                    break;
+                case "4.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(37400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(37400, diskon));
+                    break;
+                case "4.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(38200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(38200, diskon));
+                    break;
+                //-5---------------
+                case "5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(39000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(39000, diskon));
+                    break;
+                case "5.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(39800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(39800, diskon));
+                    break;
+                case "5.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(40600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(40600, diskon));
+                    break;
+                case "5.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(41400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(41400, diskon));
+                    break;
+                case "5.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(42200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(42200, diskon));
+                    break;
+                case "5.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(43000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(43000, diskon));
+                    break;
+                case "5.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(43800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(43800, diskon));
+                    break;
+                case "5.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(44600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(44600, diskon));
+                    break;
+                case "5.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(45400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(45400, diskon));
+                    break;
+                case "5.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(46200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(46200, diskon));
+                    break;
+                //-6---------------
+                case "6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(47000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(47000, diskon));
+                    break;
+                case "6.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(47800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(47800, diskon));
+                    break;
+                case "6.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(48600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(48600, diskon));
+                    break;
+                case "6.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(49400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(49400, diskon));
+                    break;
+                case "6.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(50200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(50200, diskon));
+                    break;
+                case "6.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(51000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(51000, diskon));
+                    break;
+                case "6.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(51800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(51800, diskon));
+                    break;
+                case "6.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(52600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(52600, diskon));
+                    break;
+                case "6.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(53400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(53400, diskon));
+                    break;
+                case "6.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(54200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(54200, diskon));
+                    break;
+                //-7---------------
+                case "7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(55000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(55000, diskon));
+                    break;
+                case "7.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(55800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(55800, diskon));
+                    break;
+                case "7.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(56600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(56600, diskon));
+                    break;
+                case "7.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(57400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(57400, diskon));
+                    break;
+                case "7.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(58200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(58200, diskon));
+                    break;
+                case "7.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(59000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(59000, diskon));
+                    break;
+                case "7.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(59800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(59800, diskon));
+                    break;
+                case "7.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(60600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(60600, diskon));
+                    break;
+                case "7.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(61400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(61400, diskon));
+                    break;
+                case "7.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(62200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(62200, diskon));
+                    break;
+                //-8---------------
+                case "8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(63000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(63000, diskon));
+                    break;
+                case "8.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(63800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(63800, diskon));
+                    break;
+                case "8.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(64600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(64600, diskon));
+                    break;
+                case "8.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(65400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(65400, diskon));
+                    break;
+                case "8.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(66200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(66200, diskon));
+                    break;
+                case "8.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(67000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(67000, diskon));
+                    break;
+                case "8.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(67800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(67800, diskon));
+                    break;
+                case "8.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(68600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(68600, diskon));
+                    break;
+                case "8.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(69400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(69400, diskon));
+                    break;
+                case "8.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(70200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(70200, diskon));
+                    break;
+                //-9---------------
+                case "9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(71000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(71000, diskon));
+                    break;
+                case "9.1":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(71800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(71800, diskon));
+                    break;
+                case "9.2":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(72600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(72600, diskon));
+                    break;
+                case "9.3":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(73400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(73400, diskon));
+                    break;
+                case "9.4":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(74200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(74200, diskon));
+                    break;
+                case "9.5":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(75000));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(75000, diskon));
+                    break;
+                case "9.6":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(75800));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(75800, diskon));
+                    break;
+                case "9.7":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(76600));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(76600, diskon));
+                    break;
+                case "9.8":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(77400));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(77400, diskon));
+                    break;
+                case "9.9":
+                    mOrderDetailViewMvp.setLaundryOriginalPrice(setOriPrice(78200));
+                    mOrderDetailViewMvp.setLaundryPrice(setTotalPrice(78200, diskon));
                     break;
             }
         }
