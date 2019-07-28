@@ -38,5 +38,8 @@
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/putih</item>
+        <item name="colorPrimaryDark">@color/putih</item>
+        <item name="colorAccent">@color/putih</item>
     </style>
 </resources>

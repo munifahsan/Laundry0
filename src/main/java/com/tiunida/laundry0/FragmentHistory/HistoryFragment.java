@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -31,10 +32,13 @@ public class HistoryFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private CollectionReference ordersRef = firebaseFirestore.collection("Orders");
 
+    private Model model;
     private LinearLayoutManager mLayoutManager;
     private OrderAdapter adapter;
     private FirebaseAuth firebaseAuth;
     private String user_id;
+    @BindView(R.id.image)
+    ImageView image;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +63,7 @@ public class HistoryFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
+
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new OrderAdapter.OnItemClickListener() {
