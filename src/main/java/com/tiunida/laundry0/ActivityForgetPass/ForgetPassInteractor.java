@@ -6,4 +6,8 @@ public class ForgetPassInteractor implements ForgetPassInteractorMvp {
     public ForgetPassInteractor(){
         mForgetPassRepositoryMvp = new ForgetPassRepository();
     }
+
+    public void sendPasswordResetEmail(String email){
+        mForgetPassRepositoryMvp.sendPasswordResetEmail(email);
+    }
 }

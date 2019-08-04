@@ -9,12 +9,12 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/u3_logo"
+        android:icon="@mipmap/laundry_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/u3_logo"
+        android:roundIcon="@mipmap/laundry_icon"
         android:supportsRtl="true"
         android:theme="@style/AppThemeDua">
-        <activity android:name=".ActivitySyaratKetentuan.ui.SyaratKetentuanActivity"></activity>
+        <activity android:name=".ActivitySyaratKetentuan.ui.SyaratKetentuanActivity" />
         <activity android:name=".ActivityHubungi.ui.HubungiActivity" />
         <activity android:name=".ActivitySaran.ui.SaranActivity" />
         <activity android:name=".ActivityTentangAplikasi.ui.TentangAppActivity" />

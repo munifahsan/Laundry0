@@ -411,12 +411,12 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Yakin udah diambil ?");
+        alertDialogBuilder.setTitle("Antum yakin biaya laundry sudah diterima staff laundry ?");
 
         // set pesan dari dialog
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Saip udah", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yakin", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
                         mOrderDetailPresenterMvp.validateUpdatePaid(order_id);
@@ -424,7 +424,7 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
                     }
                 })
-                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol ini diklik, akan menutup dialog
                         // dan tidak terjadi apa2
@@ -443,19 +443,19 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Yakin udah diambil ?");
+        alertDialogBuilder.setTitle("Antum yakin sudah menerima pakain yang sudah selesai dilaundry ?");
 
         // set pesan dari dialog
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Saip udah", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yakin", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
                         mOrderDetailPresenterMvp.validateUpdateDeliver(order_id);
                         mOrderDetailPresenterMvp.getOrderData(order_id);
                     }
                 })
-                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol ini diklik, akan menutup dialog
                         // dan tidak terjadi apa2

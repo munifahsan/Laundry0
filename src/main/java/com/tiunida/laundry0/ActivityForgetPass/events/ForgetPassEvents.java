@@ -1,12 +1,8 @@
 package com.tiunida.laundry0.ActivityForgetPass.events;
 
 public class ForgetPassEvents {
-    public static final int onInputError = 0;
-    public static final int onInputSuccess = 1;
-    public static final int onFIrestoreError = 2;
-    public static final int onGetDataError = 3;
-    public static final int onGetDataSuccess = 4;
-
+    public static final int onSendEmailError = 0;
+    public static final int onSendEmailSucces = 1;
 
     private int eventType;
     private String errorMessage;

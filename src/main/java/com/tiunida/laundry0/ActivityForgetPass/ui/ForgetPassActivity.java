@@ -14,13 +14,23 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.tiunida.laundry0.ActivityForgetPass.ForgetPassPresenter;
+import com.tiunida.laundry0.ActivityForgetPass.ForgetPassPresenterMvp;
 import com.tiunida.laundry0.R;
 import com.tiunida.laundry0.ActivityLogin.ui.LoginActivity;
 
-public class ForgetPassActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private Button mSendBtn;
-    private EditText mForgetEmailEdt;
+public class ForgetPassActivity extends AppCompatActivity implements ForgetPassViewMvp{
+
+    private ForgetPassPresenterMvp mForgetPassPresenterMvp;
+
+    @BindView(R.id.send_email)
+    Button mSendBtn;
+    @BindView(R.id.forget_email)
+    EditText mForgetEmailEdt;
 
     FirebaseAuth firebaseAuth;
 
@@ -29,27 +39,45 @@ public class ForgetPassActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_pass);
 
-        mSendBtn = (Button) findViewById(R.id.send_email);
-        mForgetEmailEdt = (EditText) findViewById(R.id.forget_email);
+        ButterKnife.bind(this);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        mForgetPassPresenterMvp = new ForgetPassPresenter(this);
+        mForgetPassPresenterMvp.onCreate();
+//        firebaseAuth = FirebaseAuth.getInstance();
+//
+//        mSendBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                firebaseAuth.sendPasswordResetEmail(mForgetEmailEdt.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//
+//                        } else {
+//                            String message = task.getException().getMessage();
+//                        }
+//                    }
+//                });
+//            }
+//        });
+    }
 
-        mSendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                firebaseAuth.sendPasswordResetEmail(mForgetEmailEdt.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(ForgetPassActivity.this, "Silahkan priksa E-mail anda", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(ForgetPassActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(ForgetPassActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-            }
-        });
+    @OnClick(R.id.send_email)
+    public void onSendBtnOnClick(){
+        sendPasswordResetEmail();
+    }
+
+    public void sendPasswordResetEmail(){
+        mForgetPassPresenterMvp.sendPasswordResetEmail(mForgetEmailEdt.getText().toString());
+    }
+
+    public void showMessage(String message){
+        Toast.makeText(ForgetPassActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
+    public void navigateToLogin(){
+        Intent intent = new Intent(ForgetPassActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
