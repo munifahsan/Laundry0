@@ -27,6 +27,8 @@ public class ForgetPassActivity extends AppCompatActivity implements ForgetPassV
 
     private ForgetPassPresenterMvp mForgetPassPresenterMvp;
 
+    @BindView(R.id.forget_pass_progress)
+    Button mForgetPassProgress;
     @BindView(R.id.send_email)
     Button mSendBtn;
     @BindView(R.id.forget_email)
@@ -65,6 +67,14 @@ public class ForgetPassActivity extends AppCompatActivity implements ForgetPassV
     @OnClick(R.id.send_email)
     public void onSendBtnOnClick(){
         sendPasswordResetEmail();
+    }
+
+    public void showProgress(){
+        mForgetPassProgress.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress(){
+        mForgetPassProgress.setVisibility(View.INVISIBLE);
     }
 
     public void sendPasswordResetEmail(){

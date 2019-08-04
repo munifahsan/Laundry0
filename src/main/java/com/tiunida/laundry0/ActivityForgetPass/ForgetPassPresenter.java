@@ -24,7 +24,10 @@ public class ForgetPassPresenter implements ForgetPassPresenterMvp{
     }
 
     public void sendPasswordResetEmail(String email){
-        mForgetPassInteractorMvp.sendPasswordResetEmail(email);
+        if (email!=null){
+            mForgetPassViewMvp.showProgress();
+            mForgetPassInteractorMvp.sendPasswordResetEmail(email);
+        }
     }
 
     @Override
@@ -52,6 +55,7 @@ public class ForgetPassPresenter implements ForgetPassPresenterMvp{
 
     private void onSendEmailSucces() {
         if (mForgetPassViewMvp != null){
+            mForgetPassViewMvp.hideProgress();
             mForgetPassViewMvp.navigateToLogin();
             mForgetPassViewMvp.showMessage("Link reset password telah terkirim ke alamat E-mail antum");
         }
