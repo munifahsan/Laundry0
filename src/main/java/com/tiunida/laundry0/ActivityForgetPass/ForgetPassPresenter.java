@@ -11,20 +11,20 @@ import org.greenrobot.eventbus.Subscribe;
 import static com.tiunida.laundry0.ActivityForgetPass.events.ForgetPassEvents.onSendEmailError;
 import static com.tiunida.laundry0.ActivityForgetPass.events.ForgetPassEvents.onSendEmailSucces;
 
-public class ForgetPassPresenter implements ForgetPassPresenterMvp{
+public class ForgetPassPresenter implements ForgetPassPresenterMvp {
     private ForgetPassInteractorMvp mForgetPassInteractorMvp;
     private ForgetPassViewMvp mForgetPassViewMvp;
 
     EventBus mEventBus;
 
-    public ForgetPassPresenter(ForgetPassViewMvp forgetPassViewMvp){
+    public ForgetPassPresenter(ForgetPassViewMvp forgetPassViewMvp) {
         mForgetPassInteractorMvp = new ForgetPassInteractor();
         mForgetPassViewMvp = forgetPassViewMvp;
         mEventBus = GreenRobotEventBus.getInstance();
     }
 
-    public void sendPasswordResetEmail(String email){
-        if (email!=null){
+    public void sendPasswordResetEmail(String email) {
+        if (email != null) {
             mForgetPassViewMvp.showProgress();
             mForgetPassInteractorMvp.sendPasswordResetEmail(email);
         }
@@ -54,7 +54,7 @@ public class ForgetPassPresenter implements ForgetPassPresenterMvp{
     }
 
     private void onSendEmailSucces() {
-        if (mForgetPassViewMvp != null){
+        if (mForgetPassViewMvp != null) {
             mForgetPassViewMvp.hideProgress();
             mForgetPassViewMvp.navigateToLogin();
             mForgetPassViewMvp.showMessage("Link reset password telah terkirim ke alamat E-mail antum");
@@ -62,7 +62,7 @@ public class ForgetPassPresenter implements ForgetPassPresenterMvp{
     }
 
     private void onSendEmailError(String message) {
-        if (mForgetPassViewMvp != null){
+        if (mForgetPassViewMvp != null) {
             mForgetPassViewMvp.showMessage(message);
         }
     }

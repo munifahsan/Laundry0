@@ -33,6 +33,7 @@
     <string name="detail_pesanan">Detail Pesanan</string>
     <string name="tiga_titik">...</string>
     <string name="tulis_catatan">Tulis Catatan</string>
+    <string name="your_email">Your Email</string>
 
     <integer name="btn_plus_view">1</integer>
     <integer name="btn_plus_pos">2</integer>

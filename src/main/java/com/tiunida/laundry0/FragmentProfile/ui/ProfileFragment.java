@@ -1,7 +1,10 @@
 package com.tiunida.laundry0.FragmentProfile.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,12 +66,13 @@ public class ProfileFragment extends Fragment implements ProfileFragmentViewMvp{
     private ProfileFragPresenterMvp mProfileFragPresenterMvp;
     private Unbinder unbinder;
 
+    View myFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View myFragment = inflater.inflate(R.layout.fragment_profile, container, false);
+        View myFragment = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -102,8 +106,7 @@ public class ProfileFragment extends Fragment implements ProfileFragmentViewMvp{
 
     @OnClick(R.id.log_out)
     public void onLogOut(){
-        mAuth.signOut();
-        sendToLogin();
+        showDialogLogout();
     }
 
     @OnClick(R.id.edit_profile)
@@ -129,6 +132,38 @@ public class ProfileFragment extends Fragment implements ProfileFragmentViewMvp{
     @OnClick(R.id.hubungiBtn)
     public void onHubungiOnClick(){
         sendToHubungi();
+    }
+
+    public void showDialogLogout() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Antum yakin ingin logout dari aplikasi ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Pilih Ya untuk melanjutkan")
+                .setCancelable(false)
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        mAuth.signOut();
+                        sendToLogin();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 
     public void setData(String dataName, String dataDormitory, String dataRoom, String dataPhone, String dataStatus, String dataGender){

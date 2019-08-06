@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +29,7 @@ public class ForgetPassActivity extends AppCompatActivity implements ForgetPassV
     private ForgetPassPresenterMvp mForgetPassPresenterMvp;
 
     @BindView(R.id.forget_pass_progress)
-    Button mForgetPassProgress;
+    ProgressBar mForgetPassProgress;
     @BindView(R.id.send_email)
     Button mSendBtn;
     @BindView(R.id.forget_email)

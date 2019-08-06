@@ -8,7 +8,7 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
@@ -22,6 +22,7 @@
             android:id="@+id/kaos_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/kaos_num"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
@@ -30,6 +31,7 @@
         <TextView
             android:id="@+id/kaos_num"
             android:layout_width="@dimen/product_num_width"
+            android:layout_toStartOf="@+id/kaos_pls"
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
@@ -40,14 +42,15 @@
         <at.markushi.ui.CircleButton
             android:id="@+id/kaos_pls"
             android:layout_width="23dip"
+            android:layout_alignParentEnd="true"
             android:layout_height="23dip"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -61,6 +64,7 @@
         <at.markushi.ui.CircleButton
             android:id="@+id/kaos_dalam_min"
             android:layout_width="23dip"
+            android:layout_toStartOf="@+id/kaos_dalam_num"
             android:layout_height="23dip"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
@@ -70,6 +74,7 @@
         <TextView
             android:id="@+id/kaos_dalam_num"
             android:layout_width="@dimen/product_num_width"
+            android:layout_toStartOf="@+id/kaos_dalam_pls"
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
@@ -81,13 +86,14 @@
             android:id="@+id/kaos_dalam_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -102,6 +108,7 @@
             android:id="@+id/kemeja_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/kemeja_num"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
@@ -111,6 +118,7 @@
             android:id="@+id/kemeja_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/kemeja_pls"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
             android:paddingEnd="5dp"
@@ -121,13 +129,14 @@
             android:id="@+id/kemeja_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -142,6 +151,7 @@
             android:id="@+id/baju_muslim_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/baju_muslim_num"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
@@ -151,6 +161,7 @@
             android:id="@+id/baju_muslim_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/baju_muslim_pls"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
             android:paddingEnd="5dp"
@@ -161,13 +172,14 @@
             android:id="@+id/baju_muslim_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -180,6 +192,7 @@
 
         <at.markushi.ui.CircleButton
             android:id="@+id/jaket_min"
+            android:layout_toStartOf="@+id/jaket_num"
             android:layout_width="23dip"
             android:layout_height="23dip"
             android:src="@drawable/ic_min"
@@ -190,6 +203,7 @@
         <TextView
             android:id="@+id/jaket_num"
             android:layout_width="@dimen/product_num_width"
+            android:layout_toStartOf="@+id/jaket_pls"
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
@@ -200,14 +214,15 @@
         <at.markushi.ui.CircleButton
             android:id="@+id/jaket_pls"
             android:layout_width="23dip"
+            android:layout_alignParentEnd="true"
             android:layout_height="23dip"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -222,6 +237,7 @@
             android:id="@+id/sweter_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/sweter_num"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
@@ -231,6 +247,7 @@
             android:id="@+id/sweter_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/sweter_pls"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
             android:paddingEnd="5dp"
@@ -241,13 +258,14 @@
             android:id="@+id/sweter_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -262,6 +280,7 @@
             android:id="@+id/gamis_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/gamis_num"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
@@ -270,6 +289,7 @@
         <TextView
             android:id="@+id/gamis_num"
             android:layout_width="@dimen/product_num_width"
+            android:layout_toStartOf="@+id/gamis_pls"
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
@@ -280,14 +300,15 @@
         <at.markushi.ui.CircleButton
             android:id="@+id/gamis_pls"
             android:layout_width="23dip"
+            android:layout_alignParentEnd="true"
             android:layout_height="23dip"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
@@ -301,6 +322,7 @@
         <at.markushi.ui.CircleButton
             android:id="@+id/handuk_min"
             android:layout_width="23dip"
+            android:layout_toStartOf="@+id/handuk_num"
             android:layout_height="23dip"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
@@ -310,6 +332,7 @@
         <TextView
             android:id="@+id/handuk_num"
             android:layout_width="@dimen/product_num_width"
+            android:layout_toStartOf="@+id/handuk_pls"
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:layout_marginTop="0dp"
@@ -320,11 +343,56 @@
         <at.markushi.ui.CircleButton
             android:id="@+id/handuk_pls"
             android:layout_width="23dip"
+            android:layout_alignParentEnd="true"
             android:layout_height="23dip"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
             app:cb_pressedRingWidth="8dip"
             android:onClick="buttonBodyOnclick"/>
-    </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_top">
+        <TextView
+            android:id="@+id/lain_lain_txt"
+            android:layout_alignParentStart="true"
+            android:layout_width="@dimen/product_width"
+            android:layout_height="wrap_content"
+            android:paddingTop="0.1dp"
+            android:text="Lain-lain " />
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/lain_lain_min"
+            android:layout_toLeftOf="@+id/lain_lain_num"
+            android:layout_width="23dip"
+            android:layout_height="23dip"
+            android:src="@drawable/ic_min"
+            app:cb_color="@color/putih"
+            app:cb_pressedRingWidth="8dip"
+            android:onClick="buttonHeadOnclick"/>
+
+        <TextView
+            android:id="@+id/lain_lain_num"
+            android:layout_toLeftOf="@+id/lain_lain_pls"
+            android:layout_width="@dimen/product_num_width"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:layout_marginTop="0dp"
+            android:paddingEnd="5dp"
+            android:gravity="center"
+            android:text="0" />
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/lain_lain_pls"
+            android:layout_alignParentEnd="true"
+            android:layout_width="23dip"
+            android:layout_height="23dip"
+            android:src="@drawable/ic_plus"
+            app:cb_color="@color/putih"
+            app:cb_pressedRingWidth="8dip"
+            android:onClick="buttonHeadOnclick"/>
+    </RelativeLayout>
 
 </LinearLayout>
