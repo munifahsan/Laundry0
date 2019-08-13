@@ -52,7 +52,7 @@ public class BiasaPresenter implements BiasaPresenterMvp {
                 onInputSuccess();
                 break;
             case BiasaEventsProfile.onInputError:
-
+                onInputError(event.getErrorMessage());
                 break;
             case BiasaEventsProfile.onGetDataSuccess:
                 onGetDataSuccess(event.getDataRoom(), event.getDataDormitory());
